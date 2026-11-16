@@ -46,3 +46,8 @@ NVLink:
   name: NVLink
   bandwidth: 600e9   # 600 GB/s
   cost: 150
+
+PCIe6:
+  name: PCIe 6.0 x16
+  bandwidth: 128e9   # 128 GB/s; B300 supports Gen6, but the host side may be Gen5
+  cost: 400

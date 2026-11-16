@@ -29,3 +29,10 @@ qwen2-32b:
   tokens_per_block: 16
   bytes_per_block: 2e6
   gpu_eta: 0.5
+
+glm-5.3:
+  name: GLM-5.3 (FP8, MLA + DSA)
+  params: 40.8e9
+  tokens_per_block: 16
+  bytes_per_block: 774544
+  gpu_eta: 0.5

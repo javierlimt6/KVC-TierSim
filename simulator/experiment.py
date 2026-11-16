@@ -71,6 +71,9 @@ STACK_PRESETS = {
     "a100_ddr4_nvme": HardwareConfig(
         stack_key="a100_ddr4_nvme", gpu_key="A100", dram_key="DDR4", disk_key="NVMe", link_key="NVLink"
     ),
+    "b300_banana": HardwareConfig(
+        stack_key="b300_banana", gpu_key="B300", dram_key="DDR5", disk_key="Micron7500PRO_R0x8", link_key="PCIe5", gpu_count=8
+    ),
     "a100_ddr4_sata": HardwareConfig(
         stack_key="a100_ddr4_sata", gpu_key="A100", dram_key="DDR4", disk_key="SATA", link_key="PCIe"
     ),
@@ -101,10 +104,14 @@ def hardware_throughputs(
     """
     gpu = GPUS[hardware.gpu_key]
     link = LINKS[hardware.link_key]
-    disk = DISKS[hardware.disk_key]
+    tier_bandwidth = (
+        DRAMS[hardware.dram_key].bandwidth
+        if experiment.storage_tier == "dram"
+        else DISKS[hardware.disk_key].bandwidth
+    )
 
     storage_throughput = 1.0 / (
-        (experiment.bytes_per_block / disk.bandwidth)
+        (experiment.bytes_per_block / tier_bandwidth)
         + (experiment.bytes_per_block / link.bandwidth)
     )
     t_per_token = gpu.gpu_compute_band(

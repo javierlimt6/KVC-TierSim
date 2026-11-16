@@ -139,3 +139,9 @@ NVMe:
   bandwidth: 2e9     # 2 GB/s
   capacity: 2e12     # 2 TB
   cost: 500
+
+Micron7500PRO_R0x8:
+  name: 8x Micron 7500 PRO (RAID 0)
+  bandwidth: 54.4e9
+  capacity: 30.7e12
+  cost: 0

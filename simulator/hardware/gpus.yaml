@@ -67,3 +67,11 @@ Mid-Range:
   hbm_capacity: 80e9
   peak_flops: 312e12
   cost: 12000
+
+B300:
+  name: B300 (Blackwell Ultra SXM)
+  hbm_bandwidth: 8e12      # ~8 TB/s HBM3e
+  hbm_capacity: 288e9      # 288 GB
+  peak_flops: 4.5e15       # dense FP8 per GPU
+  max_link_bandwidth: 1800e9  # NVLink 5, 1.8 TB/s per GPU
+  cost: 0
